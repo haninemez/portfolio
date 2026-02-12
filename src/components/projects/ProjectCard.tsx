@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import type { Project } from '../../types/project'
 import ImagePlaceholder from './ImagePlaceholder'
+import Lightbox from '../ui/Lightbox'
 
 interface ProjectCardProps {
   project: Project
@@ -13,14 +15,20 @@ export default function ProjectCard({
   isExpanded,
   onToggle,
 }: ProjectCardProps) {
+  const [showLightbox, setShowLightbox] = useState(false)
+
   return (
+    <>
     <button
       onClick={onToggle}
       className="group w-full text-left focus-visible:outline focus-visible:outline-3 focus-visible:outline-black focus-visible:outline-offset-3"
     >
       <div className="grid grid-cols-1 gap-8 py-10 md:grid-cols-[2fr_3fr] md:gap-12">
         {/* Image placeholder */}
-        <div className="overflow-hidden border border-gray-200 transition-all duration-100 group-hover:border-black">
+        <div
+          className="cursor-zoom-in overflow-hidden border border-gray-200 transition-all duration-100 group-hover:border-black"
+          onClick={(e) => { e.stopPropagation(); setShowLightbox(true) }}
+        >
           <ImagePlaceholder
             src={project.images[0]?.src ?? ''}
             label={project.images[0]?.label ?? project.title}
@@ -56,5 +64,14 @@ export default function ProjectCard({
         </div>
       </div>
     </button>
+
+    {showLightbox && project.images[0] && (
+      <Lightbox
+        src={project.images[0].src}
+        alt={project.images[0].label}
+        onClose={() => setShowLightbox(false)}
+      />
+    )}
+    </>
   )
 }
