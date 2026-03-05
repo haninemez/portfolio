@@ -13,7 +13,7 @@ export default function ProjectsSection() {
     <section id="projects" className="px-6 py-24 md:px-12 md:py-32 lg:py-40">
       <div className="mx-auto max-w-6xl">
         <SectionHeading subtitle="Professional collaborations with major toy brands">
-          Selected Work
+          Professional Work
         </SectionHeading>
 
         {professionalProjects.map((project, index) => (

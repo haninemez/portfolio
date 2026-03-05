@@ -14,7 +14,7 @@ export const NAV_ITEMS = [
 ]
 
 export const CONTACT = {
-  email: 'hanine.mez@gmail.com',
+  email: 'hanine.mez@outlook.com',
   location: 'Paris, France',
   instagram: 'capdollz',
 }

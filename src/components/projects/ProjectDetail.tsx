@@ -27,7 +27,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
           <div className="mt-10 grid grid-cols-1 gap-12 md:grid-cols-2">
             <div>
               <h4 className="font-mono text-xs uppercase tracking-widest text-black">
-                Items Created
+                Items Sculpted
               </h4>
               <ul className="mt-4 space-y-2">
                 {project.details.map((item) => (

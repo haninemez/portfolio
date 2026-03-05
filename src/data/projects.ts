@@ -63,12 +63,41 @@ import psSashaMic from '../images/POP STARZ/sasha mic.jpg'
 import psYasminMic from '../images/POP STARZ/yasmin mic.jpg'
 import psStock from '../images/POP STARZ/pop starz stock pic.jpg'
 
+// LAMB
+import lambCover from '../images/LAMB/LAMB1.jpg'
+import lamb2 from '../images/LAMB/LAMB2.jpg'
+import lamb3 from '../images/LAMB/LAMB3.jpg'
+import lamb4 from '../images/LAMB/LAMB4.jpg'
+import lamb5 from '../images/LAMB/LAMB5.jpg'
+import lambCharacterSheet from '../images/LAMB/LAMB CHARACTER SHEET.jpg'
+import lambPrinted from '../images/LAMB/lamb printed.png'
+
+// Bratz Fairies
+import bfCover from '../images/Bratz fairies/BF 1.jpg'
+import bf2 from '../images/Bratz fairies/BF 2.jpg'
+import bf3 from '../images/Bratz fairies/BF3.jpg'
+import bf4 from '../images/Bratz fairies/BF4.jpg'
+import bf5 from '../images/Bratz fairies/BF 5.jpg'
+import bf6 from '../images/Bratz fairies/BF 6.jpg'
+import bf7 from '../images/Bratz fairies/BF7.jpg'
+
+// Converse
+import converseCover from '../images/Converse/converse cover.jpg'
+import converse1 from '../images/Converse/Converse (1).jpg'
+import converse2 from '../images/Converse/Converse(2).jpg'
+import converse3 from '../images/Converse/Converse(3).jpg'
+import converseShoes from '../images/Converse/converse shoes 1.jpg'
+import converseWA2 from '../images/Converse/IMG-20260305-WA0002.jpg'
+import converseWA4 from '../images/Converse/IMG-20260305-WA0004.jpg'
+import converseWA8 from '../images/Converse/IMG-20260305-WA0008.jpg'
+import converseWA10 from '../images/Converse/IMG-20260305-WA0010.jpg'
+
 // Oberon & Titania
+import otRender from '../images/OBERON AND TITIANA/oberon render.jpg'
+import otCover from '../images/OBERON AND TITIANA/Oberon Cover.jpg'
+import otBW from '../images/OBERON AND TITIANA/oberon black and white.jpg'
 import otOberon from '../images/OBERON AND TITIANA/OBERON.jpg'
 import otOberon2 from '../images/OBERON AND TITIANA/OBERON2.jpg'
-import otStock from '../images/OBERON AND TITIANA/oberon stock pic.jpg'
-import otBW from '../images/OBERON AND TITIANA/oberon black and white.jpg'
-import otRender from '../images/OBERON AND TITIANA/oberon render.jpg'
 import otOriginal from '../images/OBERON AND TITIANA/oberon original.jpg'
 
 export const projects: Project[] = [
@@ -117,6 +146,7 @@ export const projects: Project[] = [
     role: '3D Sculptor — All Accessories',
     client: 'MGA Entertainment',
     collaboration: 'Lolliword',
+    titleFont: 'font-title-helvetica-compressed',
     description:
       "Created the complete motorcycle-themed accessory range for the Moto Bratz Scorchin' line, a promotional project for the official Bratz Instagram page. Sculpted all accessories including boots, gloves, chest protections, helmets, and a podium trophy, capturing high-energy racing aesthetics for 3D low-poly animation.",
     details: [
@@ -128,7 +158,7 @@ export const projects: Project[] = [
     ],
     tools: ['ZBrush', 'Blender'],
     images: [
-      { id: 'mb-8', src: mbPhotoshoot, label: 'Moto Bratz Photoshoot', aspectRatio: '4:3' },
+      { id: 'mb-9', src: mbPhotoshoot1, label: 'Moto Bratz Photoshoot', aspectRatio: '4:3' },
       { id: 'mb-1', src: mbEthanShoes, label: 'Motorcycle Boots', aspectRatio: '4:3' },
       { id: 'mb-2', src: mbBoots, label: 'Balenciaga Boots', aspectRatio: '4:3' },
       { id: 'mb-3', src: mbGloves, label: 'Riding Gloves', aspectRatio: '4:3' },
@@ -136,8 +166,8 @@ export const projects: Project[] = [
       { id: 'mb-5', src: mbHeadphones, label: 'Audio Headset', aspectRatio: '4:3' },
       { id: 'mb-6', src: mbTrophee, label: 'Podium Trophy', aspectRatio: '4:3' },
       { id: 'mb-7', src: mbHands, label: 'Cameron Hands', aspectRatio: '4:3' },
-      { id: 'mb-9', src: mbPhotoshoot1, label: 'Moto Bratz Photoshoot', aspectRatio: '16:9' },
       { id: 'mb-10', src: mbPhotoshoot2, label: 'Moto Bratz Photoshoot', aspectRatio: '16:9' },
+      { id: 'mb-8', src: mbPhotoshoot, label: 'All Characters', aspectRatio: '4:3' },
     ],
     featured: false,
   },
@@ -150,14 +180,14 @@ export const projects: Project[] = [
     category: 'professional',
     role: '3D Sculptor — Full Accessories Range',
     client: 'MGA Entertainment',
-    titleFont: 'font-title-corsiva',
+    titleFont: 'font-title-helvetica-compressed',
     description:
       'Designed and sculpted the entire accessory line for the Fashion Pixiez fairy-themed Bratz collection. Translated 2D concept art into production-ready 3D models, creating shoes, earrings, and bags infused with magic and fantasy while preserving the signature Bratz aesthetic.',
     details: [
       'Fairy-themed heeled shoes (multiple styles)',
       'Butterfly wing earrings',
-      'Star & tulip earrings',
-      'Butterfly & orchid handbags',
+      'Fantasy themed earrings',
+      'Flowers themed handbags',
       'Fairy wings',
     ],
     tools: ['ZBrush', 'Blender'],
@@ -191,7 +221,7 @@ export const projects: Project[] = [
     category: 'professional',
     role: '3D Sculptor — Shoes & Jewelry',
     client: 'MGA Entertainment',
-    titleFont: 'font-title-delamoore',
+    titleFont: 'font-title-helvetica-compressed',
     description:
       'Sculpted an elegant accessories range for the Charmz collection, focusing on refined footwear and delicate jewelry with an enchanting tone and sophisticated detailing, while preserving the core Bratz aesthetic.',
     details: [
@@ -227,7 +257,7 @@ export const projects: Project[] = [
     category: 'professional',
     role: '3D Sculptor — Performance Accessories',
     client: 'MGA Entertainment',
-    titleFont: 'font-title-aeroblades',
+    titleFont: 'font-title-helvetica-compressed',
     description:
       'Designed rock and pop-inspired accessories for the Pop Starz collection, including performance boots and stage microphone props capturing the spirit of the music scene.',
     details: [
@@ -251,29 +281,120 @@ export const projects: Project[] = [
     featured: false,
   },
   {
+    id: 'lamb',
+    title: 'LAMB',
+    subtitle: 'Brand Mascot Sculpt',
+    date: 'March 2026',
+    sortDate: '2026-03-01',
+    category: 'professional',
+    role: '3D Sculptor — Character Design & Mascot',
+    client: 'LAMB',
+    titleFont: 'font-title-helvetica-compressed',
+    description:
+      'Sculpted the official mascot character for LAMB, translating 2D brand identity into a fully realized 3D character. Developed the character sheet and produced printed figurine mockups to validate the design for production.',
+    details: [
+      'Full character body sculpt',
+      'Character sheet & design documentation',
+      'Printed figurine mockup',
+    ],
+    tools: ['ZBrush', 'Blender'],
+    images: [
+      { id: 'lamb-1', src: lambCover, label: 'LAMB Mascot', aspectRatio: '4:3' },
+      { id: 'lamb-2', src: lamb2, label: 'LAMB Mascot', aspectRatio: '4:3' },
+      { id: 'lamb-3', src: lamb3, label: 'LAMB Mascot', aspectRatio: '4:3' },
+      { id: 'lamb-4', src: lamb4, label: 'LAMB Mascot', aspectRatio: '4:3' },
+      { id: 'lamb-5', src: lamb5, label: 'LAMB Mascot', aspectRatio: '4:3' },
+      { id: 'lamb-6', src: lambCharacterSheet, label: 'Character Sheet', aspectRatio: '4:3' },
+      { id: 'lamb-7', src: lambPrinted, label: 'Printed Figurine', aspectRatio: '4:3' },
+    ],
+    featured: false,
+  },
+  {
+    id: 'bratz-fairies',
+    title: 'Bratz Fairies',
+    subtitle: 'Roman Fairies — Fantasy Accessories',
+    date: 'January 2026',
+    sortDate: '2026-01-01',
+    category: 'professional',
+    role: '3D Sculptor — Full Accessories Range',
+    client: 'MGA Entertainment',
+    titleFont: 'font-title-helvetica-compressed',
+    description:
+      'Sculpted the complete accessory range for the Bratz Fairies Roman-themed collection, creating fantasy-inspired pieces that blend classical Roman aesthetics with the signature Bratz style.',
+    details: [
+      'Fantasy-themed fairy accessories',
+      'Roman-inspired design elements',
+      'Full character accessory range',
+    ],
+    tools: ['ZBrush', 'Blender'],
+    images: [
+      { id: 'bf-1', src: bfCover, label: 'Bratz Fairies', aspectRatio: '4:3' },
+      { id: 'bf-2', src: bf2, label: 'Bratz Fairies', aspectRatio: '4:3' },
+      { id: 'bf-3', src: bf3, label: 'Bratz Fairies', aspectRatio: '4:3' },
+      { id: 'bf-4', src: bf4, label: 'Bratz Fairies', aspectRatio: '4:3' },
+      { id: 'bf-5', src: bf5, label: 'Bratz Fairies', aspectRatio: '4:3' },
+      { id: 'bf-6', src: bf6, label: 'Bratz Fairies', aspectRatio: '4:3' },
+      { id: 'bf-7', src: bf7, label: 'Bratz Fairies', aspectRatio: '4:3' },
+    ],
+    featured: false,
+  },
+  {
+    id: 'converse',
+    title: 'Converse',
+    subtitle: 'Miniature Shoe Sculpt',
+    date: 'March 2026',
+    sortDate: '2026-03-05',
+    category: 'professional',
+    role: '3D Sculptor — Miniature Footwear',
+    client: 'Converse',
+    titleFont: 'font-title-helvetica-compressed',
+    description:
+      'Sculpted miniature Converse shoe replicas with precise detailing, capturing the iconic silhouette and branding at a small scale for collectible and display purposes.',
+    details: [
+      'Miniature Converse shoe sculpts',
+      'Precise brand-accurate detailing',
+      'Multiple colorway variations',
+    ],
+    tools: ['ZBrush', 'Blender'],
+    images: [
+      { id: 'cv-1', src: converseCover, label: 'Converse', aspectRatio: '4:3' },
+      { id: 'cv-2', src: converse1, label: 'Converse', aspectRatio: '4:3' },
+      { id: 'cv-3', src: converse2, label: 'Converse', aspectRatio: '4:3' },
+      { id: 'cv-4', src: converse3, label: 'Converse', aspectRatio: '4:3' },
+      { id: 'cv-5', src: converseShoes, label: 'Converse Shoes', aspectRatio: '4:3' },
+      { id: 'cv-6', src: converseWA2, label: 'Converse', aspectRatio: '4:3' },
+      { id: 'cv-7', src: converseWA4, label: 'Converse', aspectRatio: '4:3' },
+      { id: 'cv-8', src: converseWA8, label: 'Converse', aspectRatio: '4:3' },
+      { id: 'cv-9', src: converseWA10, label: 'Converse', aspectRatio: '4:3' },
+    ],
+    featured: false,
+  },
+  {
     id: 'oberon-titania',
-    title: 'Oberon & Titania',
-    subtitle: 'Articulated Fairy Wings',
+    title: 'The Reconciliation of Oberon and Titania',
+    subtitle: 'Character Sculpting & Cloth Simulation',
     date: 'June 2025',
     sortDate: '2025-06-01',
     category: 'personal',
-    role: 'Lead Sculptor — Articulated Wings & Characters',
+    role: 'Lead Sculptor — Characters, Hair & Drapery',
     collaboration: 'Lolliword',
+    titleFont: 'font-title-helvetica-compressed',
     description:
-      'A personal project creating fully articulated fairy wings inspired by the painting "The Reconciliation of Oberon and Titania." Translated the intricate pictorial details of the original artwork into a functional 3D sculpt, balancing artistic fidelity with mechanical articulation.',
+      'This personal project came directly after the Bratz Fairies project. Having sculpted the articulated fairy wings for that collection, I was inspired to take the concept further and sculpt full characters based on the original painting "The Reconciliation of Oberon and Titania." The project focused on character sculpting, posing, and detailed hair sculpting. Cloth simulation was used throughout the process, with the simulated garments then refined and edited in ZBrush to achieve the final look.',
     details: [
-      'Fully articulated fairy wing mechanism',
-      'Character-specific body sculpting',
-      'Floral crowns & drapery',
-      'Faithful adaptation of classical painting',
+      'Full character body sculpting',
+      'Character posing',
+      'Detailed hair sculpting',
+      'Cloth simulation (Marvelous Designer)',
+      'Simulated cloth editing in ZBrush',
     ],
     tools: ['ZBrush', 'Blender', 'Marvelous Designer'],
     images: [
-      { id: 'ot-6', src: otStock, label: 'Final Presentation', aspectRatio: '4:3' },
-      { id: 'ot-1', src: otOberon, label: 'Oberon — Full Render', aspectRatio: '4:3' },
-      { id: 'ot-2', src: otOberon2, label: 'Oberon — Detail', aspectRatio: '4:3' },
       { id: 'ot-3', src: otRender, label: 'Sculpt Render', aspectRatio: '4:3' },
+      { id: 'ot-6', src: otCover, label: 'Oberon Cover', aspectRatio: '4:3' },
       { id: 'ot-4', src: otBW, label: 'Black & White', aspectRatio: '4:3' },
+      { id: 'ot-1', src: otOberon, label: 'Oberon', aspectRatio: '4:3' },
+      { id: 'ot-2', src: otOberon2, label: 'Oberon — Detail', aspectRatio: '4:3' },
       { id: 'ot-5', src: otOriginal, label: 'Original Painting', aspectRatio: '16:9' },
     ],
     featured: false,
