@@ -100,6 +100,17 @@ import otOberon from '../images/OBERON AND TITIANA/OBERON.jpg'
 import otOberon2 from '../images/OBERON AND TITIANA/OBERON2.jpg'
 import otOriginal from '../images/OBERON AND TITIANA/oberon original.jpg'
 
+// Goin' Out Jade
+import jadeMain from '../images/Goin Out Jade sculpture/JADE10F.jpg'
+import jade2 from '../images/Goin Out Jade sculpture/JADE2F.jpg'
+import jade5 from '../images/Goin Out Jade sculpture/JADE5F.jpg'
+import jade16 from '../images/Goin Out Jade sculpture/JADE16F.jpg'
+import jade20 from '../images/Goin Out Jade sculpture/JADE20F.jpg'
+import jade28 from '../images/Goin Out Jade sculpture/JADE28F.jpg'
+import jade31 from '../images/Goin Out Jade sculpture/JADE31F.jpg'
+import jade37 from '../images/Goin Out Jade sculpture/JADE37F.jpg'
+import jadeTurnaround from '../images/Goin Out Jade sculpture/Jadeturnaround2.jpg'
+
 export const projects: Project[] = [
   {
     id: 'gentle-monster-bratz',
@@ -148,7 +159,7 @@ export const projects: Project[] = [
     collaboration: 'Lolliword',
     titleFont: 'font-title-helvetica-compressed',
     description:
-      "Created the complete motorcycle-themed accessory range for the Moto Bratz Scorchin' line, a promotional project for the official Bratz Instagram page. Sculpted all accessories including boots, gloves, chest protections, helmets, and a podium trophy, capturing high-energy racing aesthetics for 3D low-poly animation.",
+      "Moto Bratz was a promotional project for the official Bratz Instagram page. The goal was to promote the Scorchin' line by creating Moto sports characters. Sculpted all accessories including boots, gloves, chest protections, helmets, and a podium trophy, capturing high-energy racing aesthetics.",
     details: [
       'Motorcycle boots (multiple styles)',
       'Riding gloves',
@@ -156,7 +167,7 @@ export const projects: Project[] = [
       'Audio headset helmets',
       'Podium trophy',
     ],
-    tools: ['ZBrush', 'Blender'],
+    tools: ['ZBrush'],
     images: [
       { id: 'mb-9', src: mbPhotoshoot1, label: 'Moto Bratz Photoshoot', aspectRatio: '4:3' },
       { id: 'mb-1', src: mbEthanShoes, label: 'Motorcycle Boots', aspectRatio: '4:3' },
@@ -282,7 +293,7 @@ export const projects: Project[] = [
   },
   {
     id: 'lamb',
-    title: 'LAMB',
+    title: 'Lamb Mascot — Designer Collectible Figurine',
     subtitle: 'Brand Mascot Sculpt',
     date: 'December 2024',
     sortDate: '2026-09-03',
@@ -291,13 +302,13 @@ export const projects: Project[] = [
     client: 'LAMB',
     titleFont: 'font-title-helvetica-compressed',
     description:
-      'Sculpted the official mascot character for LAMB, translating 2D brand identity into a fully realized 3D character. Developed the character sheet and produced printed figurine mockups to validate the design for production.',
+      "This project was developed in collaboration with the Lamb team, a Paris-based thrift store known for hosting fashion pop-ups combining clothing, drinks, and DJ sets. The project reimagines the brand's 2D mascot as a premium collectible object, exploring the translation of graphic identity into physical form and bridging branding and collectible object design.\n\nWith only a single front-facing reference available, the sculpt required a complete volumetric interpretation of the character. The focus was on defining a strong, readable silhouette and balanced proportions while preserving the graphic simplicity that makes the logo distinctive. The challenge was to extrapolate unseen angles, designing the back and side views in a way that felt intentional rather than inferred.\n\nThe final sculpt was engineered for resin 3D printing at a scale of 8 × 10 × 4 cm. Special attention was given to structural integrity, balance, and clean surface transitions to ensure print reliability and high-quality finishing. After printing, the figurine was hand painted to match the brand's visual language, resulting in a tangible extension of Lamb's identity designed for retail. Designed with series scalability in mind, the character's simplified geometry and strong silhouette allow for future variations in colorways, finishes, or thematic reinterpretations. Positioned between brand artifact and designer toy.",
     details: [
       'Full character body sculpt',
       'Character sheet & design documentation',
       'Printed figurine mockup',
     ],
-    tools: ['ZBrush', 'Blender'],
+    tools: ['ZBrush'],
     images: [
       { id: 'lamb-1', src: lambCover, label: 'LAMB Mascot', aspectRatio: '4:3' },
       { id: 'lamb-2', src: lamb2, label: 'LAMB Mascot', aspectRatio: '4:3' },
@@ -312,21 +323,23 @@ export const projects: Project[] = [
   {
     id: 'bratz-fairies',
     title: 'Bratz Fairies',
-    subtitle: 'Roman Fairies — Fantasy Accessories',
+    subtitle: 'Articulated Fairy Wings — Fashion Doll Accessory',
     date: 'March 2026',
     sortDate: '2026-03-01',
     category: 'professional',
-    role: '3D Sculptor — Full Accessories Range',
+    role: '3D Sculptor — Wing Accessory',
     client: 'MGA Entertainment',
+    collaboration: 'Lolliword',
     titleFont: 'font-title-helvetica-compressed',
     description:
-      'Sculpted the complete accessory range for the Bratz Fairies Roman-themed collection, creating fantasy-inspired pieces that blend classical Roman aesthetics with the signature Bratz style.',
+      "This project was developed in collaboration with artist Lolliword for a fairy-themed Bratz photoshoot. I was responsible for translating the art direction into a fully functional, production-ready wing accessory sculpted in ZBrush. The design was inspired by Titania's wings from The Reconciliation of Oberon and Titania.\n\nThe main challenge was reconstructing the unseen side of the wings and determining their internal structure based solely on a single painted reference. The final result balances interpretative design decisions with structural logic to ensure the wings feel both ethereal and physically plausible.\n\nThe wings were engineered as a segmented articulated system to allow controlled posing while maintaining durability. Pivot placement and range of motion were carefully planned to support expressive photography without stressing the material. A custom back peg attachment system was designed specifically for this project, ensuring secure fit, easy installation and removal, clean integration with the doll body, and minimal visual interference during shooting.\n\nThe model was optimized for high-detail resin printing, with attention to wall thickness, part separation, and assembly tolerances. The articulation system was designed with practical production considerations in mind, including mold logic and structural reinforcement points.",
     details: [
-      'Fantasy-themed fairy accessories',
-      'Roman-inspired design elements',
-      'Full character accessory range',
+      'Articulated segmented wing system',
+      'Custom back peg attachment',
+      'Optimized for resin printing',
+      'Designed for expressive posing',
     ],
-    tools: ['ZBrush', 'Blender'],
+    tools: ['ZBrush'],
     images: [
       { id: 'bf-1', src: bfCover, label: 'Bratz Fairies', aspectRatio: '4:3' },
       { id: 'bf-2', src: bf2, label: 'Bratz Fairies', aspectRatio: '4:3' },
@@ -340,7 +353,7 @@ export const projects: Project[] = [
   },
   {
     id: 'converse',
-    title: 'Converse',
+    title: 'Miniature Converse Lo Lab Sneakers',
     subtitle: 'Miniature Shoe Sculpt',
     date: 'March 2026',
     sortDate: '2026-09-05',
@@ -351,11 +364,11 @@ export const projects: Project[] = [
     description:
       'Sculpted miniature Converse shoe replicas with precise detailing, capturing the iconic silhouette and branding at a small scale for collectible and display purposes.',
     details: [
-      'Miniature Converse shoe sculpts',
+      'Miniature Converse shoe sculpt',
       'Precise brand-accurate detailing',
       'Multiple colorway variations',
     ],
-    tools: ['ZBrush', 'Blender'],
+    tools: ['ZBrush'],
     images: [
       { id: 'cv-1', src: converseCover, label: 'Converse', aspectRatio: '4:3' },
       { id: 'cv-2', src: converse1, label: 'Converse', aspectRatio: '4:3' },
@@ -366,6 +379,37 @@ export const projects: Project[] = [
       { id: 'cv-7', src: converseWA4, label: 'Converse', aspectRatio: '4:3' },
       { id: 'cv-8', src: converseWA8, label: 'Converse', aspectRatio: '4:3' },
       { id: 'cv-9', src: converseWA10, label: 'Converse', aspectRatio: '4:3' },
+    ],
+    featured: false,
+  },
+  {
+    id: 'jade-goin-out',
+    title: "Goin' Out Jade Sculpture",
+    subtitle: 'Bratz Jade — "Goin\' Out" Look (3D Sculpt Study)',
+    date: 'March 2026',
+    sortDate: '2026-03-02',
+    category: 'personal',
+    role: '3D Sculptor — Character, Hair, Outfit & Faceup',
+    titleFont: 'font-title-helvetica-compressed',
+    description:
+      "A stylized character study focused on translating an existing doll design into a production-aware 3D model, including pose, hair, outfit, and faceup.\n\nThis project is a stylized 3D recreation of Jade from Bratz, based on her \"Goin' Out\" look. The objective was to capture the character's likeness while developing a fully posed sculpt, including hair, outfit, and attitude consistent with the brand's aesthetic.\n\nA primary focus was the faceup, recreating the original doll's makeup through UV mapping and texturing to match the look of a physical product. The project also explores stylized hair sculpting, garment forms, and overall silhouette.",
+    details: [
+      'Full character pose sculpt',
+      'Stylized hair sculpting',
+      'Garment & outfit forms',
+      'Faceup via UV mapping & texturing',
+    ],
+    tools: ['ZBrush', 'UV Mapping', 'Texturing'],
+    images: [
+      { id: 'jade-1', src: jadeMain, label: 'Jade — Goin\' Out', aspectRatio: '4:3' },
+      { id: 'jade-2', src: jade2, label: 'Jade', aspectRatio: '4:3' },
+      { id: 'jade-5', src: jade5, label: 'Jade', aspectRatio: '4:3' },
+      { id: 'jade-16', src: jade16, label: 'Jade', aspectRatio: '4:3' },
+      { id: 'jade-20', src: jade20, label: 'Jade', aspectRatio: '4:3' },
+      { id: 'jade-28', src: jade28, label: 'Jade', aspectRatio: '4:3' },
+      { id: 'jade-31', src: jade31, label: 'Jade', aspectRatio: '4:3' },
+      { id: 'jade-37', src: jade37, label: 'Jade', aspectRatio: '4:3' },
+      { id: 'jade-turnaround', src: jadeTurnaround, label: 'Jade — Turnaround', aspectRatio: '4:3' },
     ],
     featured: false,
   },
