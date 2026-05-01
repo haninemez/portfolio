@@ -1,5 +1,4 @@
 import SectionHeading from '../ui/SectionHeading'
-import SectionDivider from '../layout/SectionDivider'
 import Tag from '../ui/Tag'
 import ImageCarousel from '../projects/ImageCarousel'
 import { personalByYear } from '../../data/projects'
@@ -22,7 +21,7 @@ export default function PersonalSection() {
 
         {personalByYear.map(({ year, projects }, groupIndex) => (
           <div key={year}>
-            {groupIndex > 0 && <SectionDivider weight="heavy" />}
+            {groupIndex > 0 && <div className="mt-16" />}
             <h3 className="font-display text-5xl font-black text-gray-200 md:text-7xl lg:text-8xl mb-8 select-none">
               {year}
             </h3>
@@ -32,7 +31,7 @@ export default function PersonalSection() {
                   {/* Project header */}
                   <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-16">
                     <div>
-                      <span className="font-mono text-xs uppercase tracking-widest text-gray-400">
+                      <span className="font-mono text-xs uppercase tracking-widest" style={{ color: '#918cc5' }}>
                         {project.date}
                       </span>
                       <h4 className={`mt-2 text-3xl font-bold uppercase tracking-wide md:text-5xl ${project.titleFont ?? 'font-display'}`}>

@@ -21,7 +21,7 @@ export default function AboutSection() {
 
           {/* Text */}
           <div>
-            <p className="font-body text-lg leading-relaxed text-gray-300">
+            <p className="font-body text-lg leading-relaxed text-gray-300 text-justify">
               Hanine Mezghiche is a freelance 3D sculptor based in Paris,
               specializing in doll accessories and articulated dolls for the toy
               industry. With deep expertise in{' '}
@@ -31,7 +31,7 @@ export default function AboutSection() {
               production-ready 3D models with meticulous attention to miniature
               detail.
             </p>
-            <p className="mt-6 font-body text-lg leading-relaxed text-gray-300">
+            <p className="mt-6 font-body text-lg leading-relaxed text-gray-300 text-justify">
               Her professional collaborations include work with major licensed
               brands such as <strong className="text-white">Bratz</strong> and{' '}
               <strong className="text-white">Gentle Monster</strong>, delivering

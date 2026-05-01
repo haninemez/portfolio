@@ -38,7 +38,7 @@ export default function ProjectCard({
 
         {/* Info */}
         <div className="flex flex-col justify-center">
-          <span className="font-mono text-xs uppercase tracking-widest text-gray-400">
+          <span className="font-mono text-xs uppercase tracking-widest" style={{ color: '#918cc5' }}>
             {project.date}
           </span>
           <h3 className={`mt-2 text-3xl font-bold uppercase tracking-wide md:text-4xl ${project.titleFont ?? 'font-display'}`}>
