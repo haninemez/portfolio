@@ -48,7 +48,7 @@ export default function PersonalSection() {
                     </div>
 
                     <div>
-                      <p className="font-body text-lg leading-relaxed text-gray-600">
+                      <p className="font-body text-lg leading-relaxed text-gray-600 text-justify">
                         {project.description}
                       </p>
 

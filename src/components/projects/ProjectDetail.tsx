@@ -19,7 +19,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       <div className="border-t border-gray-200 bg-gray-100 px-6 py-12 md:px-12 md:py-16">
         <div className="mx-auto max-w-6xl">
           {/* Description */}
-          <p className="max-w-3xl font-body text-lg leading-relaxed text-gray-600">
+          <p className="max-w-3xl font-body text-lg leading-relaxed text-gray-600 text-justify">
             {project.description}
           </p>
 
