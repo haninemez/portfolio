@@ -15,7 +15,7 @@ export default function AboutSection() {
             <img
               src={hanineImage}
               alt="Hanine Mezghiche"
-              className="max-h-95 w-auto object-contain"
+              className="w-full object-cover"
             />
           </div>
 

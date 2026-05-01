@@ -1,5 +1,6 @@
 import { ArrowDown } from 'lucide-react'
 import useSmoothScroll from '../../hooks/useSmoothScroll'
+import { CONTACT } from '../../lib/constants'
 
 export default function HeroSection() {
   const scrollTo = useSmoothScroll()
@@ -22,7 +23,23 @@ export default function HeroSection() {
         <p className="mt-6 font-body text-lg italic text-gray-600 md:mt-8 md:text-2xl">
           3D Sculptor / Toy Sculptor
         </p>
-        <p className="mt-2 font-mono text-xs uppercase tracking-widest text-gray-400">
+        <div className="mt-4 flex flex-col items-center gap-1">
+          <a
+            href={`mailto:${CONTACT.email}`}
+            className="font-mono text-xs uppercase tracking-widest text-gray-500 transition-colors hover:text-black"
+          >
+            {CONTACT.email}
+          </a>
+          <a
+            href={`https://instagram.com/${CONTACT.instagram}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-xs uppercase tracking-widest text-gray-500 transition-colors hover:text-black"
+          >
+            @{CONTACT.instagram}
+          </a>
+        </div>
+        <p className="mt-3 font-mono text-xs uppercase tracking-widest text-gray-400">
           Paris, France
         </p>
       </div>

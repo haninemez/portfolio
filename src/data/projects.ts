@@ -117,7 +117,7 @@ export const projects: Project[] = [
     title: 'Gentle Monster X Bratz',
     subtitle: 'Limited Edition Collaboration',
     date: 'September 2024',
-    sortDate: '2026-09-07',
+    sortDate: '2024-09-07',
     category: 'professional',
     role: '3D Sculptor — Robotic Body, Shoes & Glasses',
     client: 'MGA Entertainment / Gentle Monster',
@@ -152,7 +152,7 @@ export const projects: Project[] = [
     title: 'Moto Bratz',
     subtitle: "Scorchin' Line — Racing Accessories",
     date: 'September 2024',
-    sortDate: '2026-09-04',
+    sortDate: '2024-09-04',
     category: 'professional',
     role: '3D Sculptor — All Accessories',
     client: 'MGA Entertainment',
@@ -187,7 +187,7 @@ export const projects: Project[] = [
     title: 'Fashion Pixiez',
     subtitle: 'Fairy-Themed Accessories Collection',
     date: 'August 2024',
-    sortDate: '2026-09-06',
+    sortDate: '2024-08-06',
     category: 'professional',
     role: '3D Sculptor — Full Accessories Range',
     client: 'MGA Entertainment',
@@ -228,7 +228,7 @@ export const projects: Project[] = [
     title: 'Charmz',
     subtitle: 'Elegant Accessories Line',
     date: 'March 2024',
-    sortDate: '2026-09-02',
+    sortDate: '2024-03-02',
     category: 'professional',
     role: '3D Sculptor — Shoes & Jewelry',
     client: 'MGA Entertainment',
@@ -264,7 +264,7 @@ export const projects: Project[] = [
     title: 'Pop Starz',
     subtitle: 'Rock & Pop Performance Accessories',
     date: 'February 2024',
-    sortDate: '2026-09-01',
+    sortDate: '2024-02-01',
     category: 'professional',
     role: '3D Sculptor — Performance Accessories',
     client: 'MGA Entertainment',
@@ -296,7 +296,7 @@ export const projects: Project[] = [
     title: 'Lamb Mascot — Designer Collectible Figurine',
     subtitle: 'Brand Mascot Sculpt',
     date: 'December 2024',
-    sortDate: '2026-09-03',
+    sortDate: '2024-12-03',
     category: 'professional',
     role: '3D Sculptor — Character Design & Mascot',
     client: 'LAMB',
@@ -356,7 +356,7 @@ export const projects: Project[] = [
     title: 'Miniature Converse Lo Lab Sneakers',
     subtitle: 'Miniature Shoe Sculpt',
     date: 'March 2026',
-    sortDate: '2026-09-05',
+    sortDate: '2026-03-05',
     category: 'professional',
     role: '3D Sculptor — Miniature Footwear',
     client: 'Converse',
@@ -449,6 +449,25 @@ export const professionalProjects = projects
   .filter((p) => p.category === 'professional')
   .sort((a, b) => b.sortDate.localeCompare(a.sortDate))
 
-export const personalProjects = projects.filter(
-  (p) => p.category === 'personal'
-)
+export const personalProjects = projects
+  .filter((p) => p.category === 'personal')
+  .sort((a, b) => b.sortDate.localeCompare(a.sortDate))
+
+function getYear(sortDate: string) {
+  return sortDate.slice(0, 4)
+}
+
+export function groupByYear<T extends { sortDate: string }>(items: T[]): { year: string; projects: T[] }[] {
+  const map = new Map<string, T[]>()
+  for (const item of items) {
+    const year = getYear(item.sortDate)
+    if (!map.has(year)) map.set(year, [])
+    map.get(year)!.push(item)
+  }
+  return Array.from(map.entries())
+    .sort(([a], [b]) => b.localeCompare(a))
+    .map(([year, projects]) => ({ year, projects }))
+}
+
+export const professionalByYear = groupByYear(professionalProjects)
+export const personalByYear = groupByYear(personalProjects)

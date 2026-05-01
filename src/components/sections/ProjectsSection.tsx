@@ -4,7 +4,7 @@ import SectionHeading from '../ui/SectionHeading'
 import SectionDivider from '../layout/SectionDivider'
 import ProjectCard from '../projects/ProjectCard'
 import ProjectDetail from '../projects/ProjectDetail'
-import { professionalProjects } from '../../data/projects'
+import { professionalByYear } from '../../data/projects'
 
 export default function ProjectsSection() {
   const [expandedId, setExpandedId] = useState<string | null>(null)
@@ -16,24 +16,32 @@ export default function ProjectsSection() {
           Professional Work
         </SectionHeading>
 
-        {professionalProjects.map((project, index) => (
-          <Fragment key={project.id}>
-            {index > 0 && <SectionDivider weight="standard" />}
-            <ProjectCard
-              project={project}
-              isExpanded={expandedId === project.id}
-              onToggle={() =>
-                setExpandedId(
-                  expandedId === project.id ? null : project.id
-                )
-              }
-            />
-            <AnimatePresence>
-              {expandedId === project.id && (
-                <ProjectDetail project={project} />
-              )}
-            </AnimatePresence>
-          </Fragment>
+        {professionalByYear.map(({ year, projects }, groupIndex) => (
+          <div key={year}>
+            {groupIndex > 0 && <SectionDivider weight="heavy" />}
+            <h3 className="font-display text-5xl font-black text-gray-200 md:text-7xl lg:text-8xl mb-8 select-none">
+              {year}
+            </h3>
+            {projects.map((project, index) => (
+              <Fragment key={project.id}>
+                {index > 0 && <SectionDivider weight="standard" />}
+                <ProjectCard
+                  project={project}
+                  isExpanded={expandedId === project.id}
+                  onToggle={() =>
+                    setExpandedId(
+                      expandedId === project.id ? null : project.id
+                    )
+                  }
+                />
+                <AnimatePresence>
+                  {expandedId === project.id && (
+                    <ProjectDetail project={project} />
+                  )}
+                </AnimatePresence>
+              </Fragment>
+            ))}
+          </div>
         ))}
       </div>
     </section>
