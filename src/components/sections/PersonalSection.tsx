@@ -22,7 +22,7 @@ export default function PersonalSection() {
         {personalByYear.map(({ year, projects }, groupIndex) => (
           <div key={year}>
             {groupIndex > 0 && <div className="mt-16" />}
-            <h3 className="font-display text-5xl font-black text-gray-200 md:text-7xl lg:text-8xl mb-8 select-none">
+            <h3 className="font-display text-5xl font-black text-[#918cc5] md:text-7xl lg:text-8xl mb-8 select-none">
               {year}
             </h3>
             <div className="space-y-24">
