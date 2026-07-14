@@ -1,7 +1,7 @@
 import SectionHeading from '../ui/SectionHeading'
 import Tag from '../ui/Tag'
 import { TOOLS } from '../../lib/constants'
-import hanineImage from '../../images/Hanine image.jpg'
+import hanineImage from '../../images/Hanine image.png'
 
 export default function AboutSection() {
   return (
