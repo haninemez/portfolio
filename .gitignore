@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Sources brutes (originaux lourds, hors site)
+Portfolio assets/
+*.psd

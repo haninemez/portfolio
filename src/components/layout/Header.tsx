@@ -40,7 +40,7 @@ export default function Header() {
           onClick={() => scrollTo('hero')}
           className="font-display text-sm font-bold uppercase tracking-widest focus-visible:outline focus-visible:outline-3 focus-visible:outline-black focus-visible:outline-offset-3"
         >
-          Hanine Mezghiche
+          Hanine
         </button>
 
         <Nav activeSection={activeSection} />

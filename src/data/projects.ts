@@ -1,4 +1,4 @@
-import type { Project } from '../types/project'
+import type { Project, ProjectImage } from '../types/project'
 
 // Gentle Monster
 import gmSculpt1 from '../images/Gentle monster/gm sculpt1.jpg'
@@ -9,58 +9,17 @@ import gmPopUp from '../images/Gentle monster/GM POP UP.jpg'
 import gmPopUp2 from '../images/Gentle monster/GM pop up2.jpg'
 
 // Moto Bratz
-import mbTrophee from '../images/Moto bratz/trophee.jpg'
-import mbHeadphones from '../images/Moto bratz/headphones.jpg'
-import mbEthanShoes from '../images/Moto bratz/ethan shoes.jpg'
-import mbBoots from '../images/Moto bratz/balenciaga boots.jpg'
-import mbChestPiece from '../images/Moto bratz/chest piece.jpg'
-import mbGloves from '../images/Moto bratz/kobe gloves.jpg'
-import mbHands from '../images/Moto bratz/cameron hands.jpg'
 import mbPhotoshoot from '../images/Moto bratz/MOTO bratz photoshoot.jpg'
 import mbPhotoshoot1 from '../images/Moto bratz/MOTO bratz photoshoot1.jpg'
 import mbPhotoshoot2 from '../images/Moto bratz/MOTO bratz photoshoot2.jpg'
 
 // Fashion Pixiez
-import fpCloeShoes from '../images/fashion pixies/cloe shoes.jpg'
-import fpYasminShoes from '../images/fashion pixies/yasmin shoes.jpg'
-import fpSashaShoes from '../images/fashion pixies/sasha shoes.jpg'
-import fpJadeShoes from '../images/fashion pixies/Jade shoes.jpg'
-import fpLina from '../images/fashion pixies/Lina.jpg'
-import fpWings from '../images/fashion pixies/Wings.jpg'
-import fpCloeEarrings from '../images/fashion pixies/cloe earrings.jpg'
-import fpYasminEarrings from '../images/fashion pixies/Yasmin earrings.jpg'
-import fpJadeEarrings from '../images/fashion pixies/jade earrings.jpg'
-import fpSashaEarrings from '../images/fashion pixies/sasha earrings.jpg'
-import fpCloeBags from '../images/fashion pixies/cloe bags.jpg'
-import fpYasminBag from '../images/fashion pixies/yasmin bag.jpg'
-import fpSashaBag from '../images/fashion pixies/sasha bag.jpg'
-import fpJadeBag from '../images/fashion pixies/jade bag.jpg'
-import fpLinaBag from '../images/fashion pixies/Lina bag.jpg'
-import fpLinaEarrings from '../images/fashion pixies/lina earringd.jpg'
 import fpStock from '../images/fashion pixies/FP stock pics.jpg'
 
 // Charmz
-import chYasminHairclip from '../images/CHARMZ/yasmin hairclip.jpg'
-import chSashaHairclip from '../images/CHARMZ/sasha hairclip.jpg'
-import chCloeHairclip from '../images/CHARMZ/cloe hairclip.jpg'
-import chYasminEarrings from '../images/CHARMZ/yasmin earrings.jpg'
-import chJade from '../images/CHARMZ/charmz jade.jpg'
-import chYasmin from '../images/CHARMZ/charmz yasmin.jpg'
-import chCloe from '../images/CHARMZ/charmz cloe.jpg'
-import chSasha from '../images/CHARMZ/charmz sasha.jpg'
-import chYasminNecklace from '../images/CHARMZ/yasmin necklace.jpg'
-import chSashaNecklace from '../images/CHARMZ/sasha necklace.jpg'
 import chStock from '../images/CHARMZ/charmz stock pic.jpg'
 
 // Pop Starz
-import psSashaShoes from '../images/POP STARZ/sasha shoes.jpg'
-import psJadeShoes from '../images/POP STARZ/jade shoes.jpg'
-import psCloeShoes from '../images/POP STARZ/cloe shoes.jpg'
-import psYasminShoes from '../images/POP STARZ/yasmin shoes.jpg'
-import psJadeMic from '../images/POP STARZ/jade mic.jpg'
-import psCloeMic from '../images/POP STARZ/cloe mic.jpg'
-import psSashaMic from '../images/POP STARZ/sasha mic.jpg'
-import psYasminMic from '../images/POP STARZ/yasmin mic.jpg'
 import psStock from '../images/POP STARZ/pop starz stock pic.jpg'
 
 // LAMB
@@ -70,7 +29,7 @@ import lamb3 from '../images/LAMB/LAMB3.jpg'
 import lamb4 from '../images/LAMB/LAMB4.jpg'
 import lamb5 from '../images/LAMB/LAMB5.jpg'
 import lambCharacterSheet from '../images/LAMB/LAMB CHARACTER SHEET.jpg'
-import lambPrinted from '../images/LAMB/lamb printed.png'
+import lambPrinted from '../images/LAMB/lamb printed.jpg'
 
 // Bratz Fairies
 import bfCover from '../images/Bratz fairies/BF 1.jpg'
@@ -111,6 +70,55 @@ import jade31 from '../images/Goin Out Jade sculpture/JADE31F.jpg'
 import jade37 from '../images/Goin Out Jade sculpture/JADE37F.jpg'
 import jadeTurnaround from '../images/Goin Out Jade sculpture/Jadeturnaround2.jpg'
 
+/**
+ * Folder-backed image sets. Vite resolves these at build time; files are ordered
+ * naturally (img2 before img10) so the on-disk order is the display order.
+ */
+const allImages = import.meta.glob<string>(
+  [
+    '../images/fashion pixies/*/*.jpg',
+    '../images/CHARMZ/*/*.jpg',
+    '../images/POP STARZ/*/*.jpg',
+    '../images/Moto bratz/*/*.jpg',
+    '../images/Moto bratz/IMG_*.jpg',
+    '../images/Gentle monster/GM[0-9]*.jpg',
+    '../images/MOWALOLA/*.jpg',
+    '../images/De4dname sculpture/*.jpg',
+    '../images/DE4DNAME/*.jpg',
+    '../images/Bratz twins/*.jpg',
+  ],
+  { eager: true, import: 'default' },
+)
+
+const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' })
+
+function folder(path: string, label: string): ProjectImage[] {
+  const prefix = `../images/${path}/`
+  return Object.entries(allImages)
+    .filter(([key]) => key.startsWith(prefix) && !key.slice(prefix.length).includes('/'))
+    .sort(([a], [b]) => collator.compare(a, b))
+    .map(([key, src]) => ({
+      id: key.slice('../images/'.length).replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase(),
+      src,
+      label,
+      aspectRatio: '4:3' as const,
+    }))
+}
+
+function pick(path: string, files: string[], label: string): ProjectImage[] {
+  return files.map((file) => {
+    const key = `../images/${path}/${file}`
+    const src = allImages[key]
+    if (!src) throw new Error(`Missing image: ${key}`)
+    return {
+      id: `${path}/${file}`.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase(),
+      src,
+      label,
+      aspectRatio: '4:3' as const,
+    }
+  })
+}
+
 export const projects: Project[] = [
   {
     id: 'gentle-monster-bratz',
@@ -119,7 +127,7 @@ export const projects: Project[] = [
     date: 'May 2025',
     sortDate: '2025-05-07',
     category: 'professional',
-    role: '3D Sculptor — Robotic Body, Shoes & Glasses',
+    role: 'Robotic Body, Shoes & Glasses',
     client: 'MGA Entertainment / Gentle Monster',
     titleFont: 'font-title-helvetica-compressed',
     description:
@@ -142,6 +150,11 @@ export const projects: Project[] = [
       { id: 'gm-1', src: gmSculpt1, label: 'Robotic Body — Blue/Silver', aspectRatio: '4:3' },
       { id: 'gm-2', src: gmSculpt2, label: 'Robotic Body — Gold/Bronze', aspectRatio: '4:3' },
       { id: 'gm-3', src: gmSculpt3, label: 'Full Figure — Gray Matte', aspectRatio: '4:3' },
+      ...pick(
+        'Gentle monster',
+        ['GM1.jpg', 'GM2.jpg', 'GM3.jpg', 'GM4.jpg', 'GM5.jpg', 'GM6.jpg', 'GM7.jpg', 'GM8.jpg', 'GM9.jpg', 'GM10.jpg'],
+        'Gentle Monster X Bratz',
+      ),
       { id: 'gm-5', src: gmPopUp, label: 'Pop-up Store — Los Angeles', aspectRatio: '4:3' },
       { id: 'gm-6', src: gmPopUp2, label: 'Giant Statue — Installation', aspectRatio: '4:3' },
     ],
@@ -154,7 +167,7 @@ export const projects: Project[] = [
     date: 'September 2024',
     sortDate: '2024-09-04',
     category: 'professional',
-    role: '3D Sculptor — All Accessories',
+    role: 'All Accessories',
     client: 'MGA Entertainment',
     collaboration: 'Lolliword',
     titleFont: 'font-title-helvetica-compressed',
@@ -170,15 +183,27 @@ export const projects: Project[] = [
     tools: ['ZBrush'],
     images: [
       { id: 'mb-9', src: mbPhotoshoot1, label: 'Moto Bratz Photoshoot', aspectRatio: '4:3' },
-      { id: 'mb-1', src: mbEthanShoes, label: 'Motorcycle Boots', aspectRatio: '4:3' },
-      { id: 'mb-2', src: mbBoots, label: 'Balenciaga Boots', aspectRatio: '4:3' },
-      { id: 'mb-3', src: mbGloves, label: 'Riding Gloves', aspectRatio: '4:3' },
-      { id: 'mb-4', src: mbChestPiece, label: 'Chest Protection', aspectRatio: '4:3' },
-      { id: 'mb-5', src: mbHeadphones, label: 'Audio Headset', aspectRatio: '4:3' },
-      { id: 'mb-6', src: mbTrophee, label: 'Podium Trophy', aspectRatio: '4:3' },
-      { id: 'mb-7', src: mbHands, label: 'Cameron Hands', aspectRatio: '4:3' },
       { id: 'mb-10', src: mbPhotoshoot2, label: 'Moto Bratz Photoshoot', aspectRatio: '16:9' },
       { id: 'mb-8', src: mbPhotoshoot, label: 'All Characters', aspectRatio: '4:3' },
+    ],
+    imageGroups: [
+      folder('Moto bratz/chest', 'Moto Bratz'),
+      folder('Moto bratz/gloves', 'Moto Bratz'),
+      folder('Moto bratz/headphone', 'Moto Bratz'),
+      folder('Moto bratz/shoes', 'Moto Bratz'),
+      folder('Moto bratz/trophy', 'Moto Bratz'),
+      pick(
+        'Moto bratz',
+        [
+          'IMG_20241006_124519_812.jpg',
+          'IMG_20241007_111721_781.jpg',
+          'IMG_20241008_155238_560.jpg',
+          'IMG_20241107_183820_969.jpg',
+          'IMG_20241107_183822_667.jpg',
+          'IMG_20241107_185334_091.jpg',
+        ],
+        'Moto Bratz',
+      ),
     ],
     featured: false,
   },
@@ -189,7 +214,7 @@ export const projects: Project[] = [
     date: 'August 2025',
     sortDate: '2025-08-06',
     category: 'professional',
-    role: '3D Sculptor — Full Accessories Range',
+    role: 'Full Accessories Range',
     client: 'MGA Entertainment',
     titleFont: 'font-title-helvetica-compressed',
     description:
@@ -204,22 +229,14 @@ export const projects: Project[] = [
     tools: ['ZBrush', 'Blender'],
     images: [
       { id: 'fp-17', src: fpStock, label: 'Full Collection', aspectRatio: '4:3' },
-      { id: 'fp-1', src: fpCloeShoes, label: 'Cloe Shoes', aspectRatio: '4:3' },
-      { id: 'fp-2', src: fpYasminShoes, label: 'Yasmin Shoes', aspectRatio: '4:3' },
-      { id: 'fp-3', src: fpSashaShoes, label: 'Sasha Shoes', aspectRatio: '4:3' },
-      { id: 'fp-4', src: fpJadeShoes, label: 'Jade Shoes', aspectRatio: '4:3' },
-      { id: 'fp-5', src: fpLina, label: 'Lina', aspectRatio: '4:3' },
-      { id: 'fp-6', src: fpWings, label: 'Fairy Wings', aspectRatio: '4:3' },
-      { id: 'fp-7', src: fpCloeEarrings, label: 'Cloe Earrings', aspectRatio: '4:3' },
-      { id: 'fp-8', src: fpYasminEarrings, label: 'Yasmin Earrings', aspectRatio: '4:3' },
-      { id: 'fp-9', src: fpJadeEarrings, label: 'Jade Earrings', aspectRatio: '4:3' },
-      { id: 'fp-10', src: fpSashaEarrings, label: 'Sasha Earrings', aspectRatio: '4:3' },
-      { id: 'fp-11', src: fpCloeBags, label: 'Cloe Bags', aspectRatio: '4:3' },
-      { id: 'fp-12', src: fpYasminBag, label: 'Yasmin Bag', aspectRatio: '4:3' },
-      { id: 'fp-13', src: fpSashaBag, label: 'Sasha Bag', aspectRatio: '4:3' },
-      { id: 'fp-14', src: fpJadeBag, label: 'Jade Bag', aspectRatio: '4:3' },
-      { id: 'fp-15', src: fpLinaBag, label: 'Lina Bag', aspectRatio: '4:3' },
-      { id: 'fp-16', src: fpLinaEarrings, label: 'Lina Earrings', aspectRatio: '4:3' },
+    ],
+    imageGroups: [
+      folder('fashion pixies/cloe', 'Fashion Pixiez'),
+      folder('fashion pixies/Jade', 'Fashion Pixiez'),
+      folder('fashion pixies/lina', 'Fashion Pixiez'),
+      folder('fashion pixies/sasha', 'Fashion Pixiez'),
+      folder('fashion pixies/yamin', 'Fashion Pixiez'),
+      folder('fashion pixies/wings', 'Fashion Pixiez'),
     ],
     featured: false,
   },
@@ -230,7 +247,7 @@ export const projects: Project[] = [
     date: 'January 2026',
     sortDate: '2026-01-02',
     category: 'professional',
-    role: '3D Sculptor — Shoes & Jewelry',
+    role: 'Shoes & Jewelry',
     client: 'MGA Entertainment',
     titleFont: 'font-title-helvetica-compressed',
     description:
@@ -246,16 +263,12 @@ export const projects: Project[] = [
     tools: ['ZBrush', 'Blender'],
     images: [
       { id: 'ch-11', src: chStock, label: 'Full Collection', aspectRatio: '4:3' },
-      { id: 'ch-1', src: chJade, label: 'Charmz Jade', aspectRatio: '4:3' },
-      { id: 'ch-2', src: chYasmin, label: 'Charmz Yasmin', aspectRatio: '4:3' },
-      { id: 'ch-3', src: chCloe, label: 'Charmz Cloe', aspectRatio: '4:3' },
-      { id: 'ch-4', src: chSasha, label: 'Charmz Sasha', aspectRatio: '4:3' },
-      { id: 'ch-5', src: chYasminHairclip, label: 'Yasmin Hairclip', aspectRatio: '4:3' },
-      { id: 'ch-6', src: chSashaHairclip, label: 'Sasha Hairclip', aspectRatio: '4:3' },
-      { id: 'ch-7', src: chCloeHairclip, label: 'Cloe Hairclip', aspectRatio: '4:3' },
-      { id: 'ch-8', src: chYasminEarrings, label: 'Yasmin Earrings', aspectRatio: '4:3' },
-      { id: 'ch-9', src: chYasminNecklace, label: 'Yasmin Necklace', aspectRatio: '4:3' },
-      { id: 'ch-10', src: chSashaNecklace, label: 'Sasha Necklace', aspectRatio: '4:3' },
+    ],
+    imageGroups: [
+      folder('CHARMZ/cloe', 'Charmz'),
+      folder('CHARMZ/jade', 'Charmz'),
+      folder('CHARMZ/sasha', 'Charmz'),
+      folder('CHARMZ/yasmin', 'Charmz'),
     ],
     featured: false,
   },
@@ -266,7 +279,7 @@ export const projects: Project[] = [
     date: 'January 2026',
     sortDate: '2026-01-01',
     category: 'professional',
-    role: '3D Sculptor — Performance Accessories',
+    role: 'Performance Accessories',
     client: 'MGA Entertainment',
     titleFont: 'font-title-helvetica-compressed',
     description:
@@ -280,15 +293,47 @@ export const projects: Project[] = [
     tools: ['ZBrush', 'Blender'],
     images: [
       { id: 'ps-9', src: psStock, label: 'Full Collection', aspectRatio: '4:3' },
-      { id: 'ps-1', src: psSashaShoes, label: 'Sasha Boots', aspectRatio: '4:3' },
-      { id: 'ps-2', src: psJadeShoes, label: 'Jade Boots', aspectRatio: '4:3' },
-      { id: 'ps-3', src: psCloeShoes, label: 'Cloe Boots', aspectRatio: '4:3' },
-      { id: 'ps-4', src: psYasminShoes, label: 'Yasmin Boots', aspectRatio: '4:3' },
-      { id: 'ps-5', src: psJadeMic, label: 'Jade Microphone', aspectRatio: '4:3' },
-      { id: 'ps-6', src: psCloeMic, label: 'Cloe Microphone', aspectRatio: '4:3' },
-      { id: 'ps-7', src: psSashaMic, label: 'Sasha Microphone', aspectRatio: '4:3' },
-      { id: 'ps-8', src: psYasminMic, label: 'Yasmin Microphone', aspectRatio: '4:3' },
     ],
+    imageGroups: [
+      folder('POP STARZ/cloe', 'Pop Starz'),
+      folder('POP STARZ/jade', 'Pop Starz'),
+      folder('POP STARZ/Sasha', 'Pop Starz'),
+      folder('POP STARZ/yasmin', 'Pop Starz'),
+    ],
+    featured: false,
+  },
+  {
+    id: 'bratz-twins',
+    title: 'Bratz Twins',
+    subtitle: 'Commissioned Accessories Set',
+    date: 'February 2026',
+    sortDate: '2026-02-01',
+    category: 'professional',
+    role: 'All Accessories',
+    client: '@peace.love.plastic',
+    titleFont: 'font-title-helvetica-compressed',
+    description:
+      'A commission for @peace.love.plastic on Instagram. I sculpted all the accessories for the Bratz Twins project, working to the client\'s brief and delivering each piece as a finished, production-ready model.',
+    details: ['All accessories sculpted for the set'],
+    tools: ['ZBrush'],
+    images: folder('Bratz twins', 'Bratz Twins'),
+    featured: false,
+  },
+  {
+    id: 'de4dname-wand',
+    title: 'De4dname Magical Wand',
+    subtitle: 'Commissioned Prop — 3D Printed Wand',
+    date: 'February 2026',
+    sortDate: '2026-02-02',
+    category: 'professional',
+    role: 'Prop Sculpt',
+    client: '@de4dname',
+    titleFont: 'font-title-helvetica-compressed',
+    description:
+      'A commission for @de4dname on Instagram. I sculpted a magical wand intended to be 3D printed and painted for her thesis project.',
+    details: ['Magical wand sculpt', 'Prepared for 3D printing and painting'],
+    tools: ['ZBrush'],
+    images: folder('DE4DNAME', 'De4dname Magical Wand'),
     featured: false,
   },
   {
@@ -298,7 +343,7 @@ export const projects: Project[] = [
     date: 'December 2024',
     sortDate: '2024-12-03',
     category: 'professional',
-    role: '3D Sculptor — Character Design & Mascot',
+    role: 'Character Design & Mascot',
     client: 'LAMB',
     titleFont: 'font-title-helvetica-compressed',
     description:
@@ -327,7 +372,7 @@ export const projects: Project[] = [
     date: 'June 2025',
     sortDate: '2025-06-01',
     category: 'professional',
-    role: '3D Sculptor — Wing Accessory',
+    role: 'Wing Accessory',
     client: 'MGA Entertainment',
     collaboration: 'Lolliword',
     titleFont: 'font-title-helvetica-compressed',
@@ -358,7 +403,7 @@ export const projects: Project[] = [
     date: 'March 2026',
     sortDate: '2026-03-05',
     category: 'professional',
-    role: '3D Sculptor — Miniature Footwear',
+    role: 'Miniature Footwear',
     client: 'Converse',
     titleFont: 'font-title-helvetica-compressed',
     description:
@@ -383,13 +428,45 @@ export const projects: Project[] = [
     featured: false,
   },
   {
+    id: 'mowalola-beats',
+    title: 'Mowalola X Beats',
+    subtitle: 'Campaign Recreation',
+    date: 'March 2026',
+    sortDate: '2026-03-10',
+    category: 'personal',
+    role: 'Character, Outfit & Props',
+    titleFont: 'font-title-helvetica-compressed',
+    description:
+      'A personal project recreating the original Mowalola x Beats campaign, the one featuring the singer JT. The goal was to rebuild that advertisement in 3D, matching its look and attitude as closely as possible.',
+    details: ['Character sculpt', 'Outfit & accessories', 'Campaign scene recreation'],
+    tools: ['ZBrush', 'Blender'],
+    images: folder('MOWALOLA', 'Mowalola X Beats'),
+    featured: false,
+  },
+  {
+    id: 'de4dname-sculpture',
+    title: 'De4dname Sculpture',
+    subtitle: 'Character Sculpt from Original Artwork',
+    date: 'March 2026',
+    sortDate: '2026-03-08',
+    category: 'personal',
+    role: 'Character Sculpt',
+    titleFont: 'font-title-helvetica-compressed',
+    description:
+      'A personal project sculpting a character based on an original artwork by @boyknifeart on Instagram. The aim was to translate the 2D drawing into a fully realised 3D sculpt while staying faithful to the original design.',
+    details: ['Full character sculpt', 'Translated from 2D artwork to 3D'],
+    tools: ['ZBrush'],
+    images: folder('De4dname sculpture', 'De4dname Sculpture'),
+    featured: false,
+  },
+  {
     id: 'jade-goin-out',
     title: "Goin' Out Jade Sculpture",
     subtitle: 'Bratz Jade — "Goin\' Out" Look (3D Sculpt Study)',
     date: 'March 2026',
     sortDate: '2026-03-02',
     category: 'personal',
-    role: '3D Sculptor — Character, Hair, Outfit & Faceup',
+    role: 'Character, Hair, Outfit & Faceup',
     titleFont: 'font-title-helvetica-compressed',
     description:
       "A stylized character study focused on translating an existing doll design into a production-aware 3D model, including pose, hair, outfit, and faceup.\n\nThis project is a stylized 3D recreation of Jade from Bratz, based on her \"Goin' Out\" look. The objective was to capture the character's likeness while developing a fully posed sculpt, including hair, outfit, and attitude consistent with the brand's aesthetic.\n\nA primary focus was the faceup, recreating the original doll's makeup through UV mapping and texturing to match the look of a physical product. The project also explores stylized hair sculpting, garment forms, and overall silhouette.",

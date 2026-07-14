@@ -17,9 +17,6 @@ export default function HeroSection() {
         <h1 className="font-display font-black uppercase leading-none tracking-tighter text-black text-[clamp(3.5rem,12vw,10rem)]">
           Hanine
         </h1>
-        <h1 className="font-display font-black uppercase leading-none tracking-tighter text-black text-[clamp(3.5rem,12vw,10rem)]">
-          Mezghiche
-        </h1>
         <p className="mt-6 font-body text-lg italic text-gray-600 md:mt-8 md:text-2xl">
           3D Sculptor / Toy Sculptor
         </p>
@@ -39,9 +36,6 @@ export default function HeroSection() {
             @{CONTACT.instagram}
           </a>
         </div>
-        <p className="mt-3 font-mono text-xs uppercase tracking-widest text-gray-400">
-          Paris, France
-        </p>
       </div>
 
       {/* Scroll indicator */}

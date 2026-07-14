@@ -20,6 +20,8 @@ export interface Project {
   exhibitions?: string[]
   tools: string[]
   images: ProjectImage[]
+  /** Optional unnamed sub-sections; each renders as its own carousel below the main one. */
+  imageGroups?: ProjectImage[][]
   featured: boolean
   titleFont?: string
 }

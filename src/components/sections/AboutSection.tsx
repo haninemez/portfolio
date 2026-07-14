@@ -1,7 +1,7 @@
 import SectionHeading from '../ui/SectionHeading'
 import Tag from '../ui/Tag'
 import { TOOLS } from '../../lib/constants'
-import hanineImage from '../../images/Hanine image.png'
+import hanineImage from '../../images/Hanine image.jpg'
 
 export default function AboutSection() {
   return (
@@ -14,7 +14,7 @@ export default function AboutSection() {
           <div className="flex items-start justify-center">
             <img
               src={hanineImage}
-              alt="Hanine Mezghiche"
+              alt="Hanine"
               className="w-full object-cover"
             />
           </div>
@@ -22,9 +22,8 @@ export default function AboutSection() {
           {/* Text */}
           <div>
             <p className="font-body text-lg leading-relaxed text-gray-300 text-justify">
-              Hanine Mezghiche is a freelance 3D sculptor based in Paris,
-              specializing in doll accessories and articulated dolls for the toy
-              industry. With deep expertise in{' '}
+              Hanine is a freelance 3D sculptor specializing in doll accessories
+              and articulated dolls for the toy industry. With deep expertise in{' '}
               <strong className="text-white">ZBrush</strong> for digital
               sculpting and <strong className="text-white">Blender</strong> for
               rendering and modeling, she translates 2D concepts into

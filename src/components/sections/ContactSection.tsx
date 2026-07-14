@@ -39,10 +39,6 @@ export default function ContactSection() {
         >
           <Instagram size={24} strokeWidth={1.5} />
         </a>
-
-        <p className="mt-4 font-mono text-xs uppercase tracking-widest text-gray-500">
-          {CONTACT.location}
-        </p>
       </div>
     </section>
   )

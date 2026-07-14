@@ -87,6 +87,11 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
           {/* Image carousel */}
           <ImageCarousel images={project.images} />
+
+          {/* Sub-sections — deliberately unlabelled */}
+          {project.imageGroups?.map((group, i) => (
+            <ImageCarousel key={i} images={group} />
+          ))}
         </div>
       </div>
     </motion.div>
